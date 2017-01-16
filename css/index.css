@@ -3,7 +3,11 @@
 /* black : #242D3B */
 /* grey : #919293 */
 
-
+#wrapper {
+  position: relative;
+  margin: 0 auto;
+  width: 540px;
+}
 .left, .right {
   position: relative;
   float: left;

@@ -1,0 +1,120 @@
+Opérateur	Secteur	Chiffre d'affaires 2015 (en millions d'euros)	Pourcentage de détention du capital (à la fin 2015)
+
+{
+  "APE" : {
+    "title": "APE",
+    "secteur": [
+      {
+        "title": "Transports",
+        "entreprises": [
+          {"title": "Aéroport Toulouse Blagnac","chiffre": "124","capital": "10.01"}
+          {"title": "Aéroports de Lyon","chiffre": "162","capital": "60.00"}
+          {"title": "Aéroports de Paris","chiffre": "2,916","capital": "50.63"}
+          {"title": "Air France","chiffre": "26,062","capital": "17.58"}
+          {"title": "Port du Havre","chiffre": "188","capital": "100.00"}
+          {"title": "RATP","chiffre": "5,556","capital": "100.00"}
+          {"title": "SNCF Mobilités","chiffre": "29,296","capital": "100.00"}
+          {"title": "SNCF Réseau","chiffre": "6,264","capital": "100.00"}
+        ]
+      },
+      {
+        "title": "Aéronautique",
+        "entreprises": [
+          {"title": "Airbus","chiffre": "64,450","capital": "9.91"},
+          {"title": "Arianespace","chiffre": "1,398","capital": "34.68"},
+          {"title": "DCNS","chiffre": "3,039","capital": "62.49"},
+          {"title": "Nexter","chiffre": "1,070","capital": "50.00"},
+          {"title": "Safran","chiffre": "18,100","capital": "15.39"},
+          {"title": "Thales","chiffre": "14,063","capital": "26.00"}
+        ]
+      },
+      {
+        "title": "Énergie et matières premières",
+        "entreprises" : [
+          {"title": "AREVA","chiffre": "4,199","capital": "83.00"}
+          {"title": "EDF","chiffre": "75,006","capital": "84.94"}
+          {"title": "Engie","chiffre": "69,883","capital": "32.76"}
+        ]
+      },
+      {
+        "title": "Services / Finance",
+        "entreprises": [
+          {"title": "Dexia", "chiffre" :"834", "capital":"44.40"}
+          {"title": "FDJ", "chiffre" :"1,649", "capital":"72.00"}
+          {"title": "Imprimerie nationale", "chiffre" :"209", "capital":"100.00"}
+          {"title": "La Poste", "chiffre" :"23,045", "capital":"100.00"}
+          {"title": "Marché international de Rungis", "chiffre" :"105", "capital":"33.34"}
+          {"title": "SFIL", "chiffre" :"75", "capital":"95.00"}
+        ]
+      },
+      {
+        "title": "Audiovisuel",
+      },
+      {
+        "title": "Industrie / Télécoms",
+      },
+    ]
+  }
+}
+
+
+
+
+
+
+
+
+France médias monde	APE	Audiovisuel	255	100.00
+France télévisions	APE	Audiovisuel	3,006	100.00
+Ina	APE	Audiovisuel	36	100.00
+Radio France	APE	Audiovisuel	639	100.00
+
+LFB	APE	Industrie / Télécoms	502	100.00
+Monnaie de Paris	APE	Industrie / Télécoms	131	100.00
+Orange	APE	Industrie / Télécoms	40,236	23.05
+PSA	APE	Industrie / Télécoms	54,676	14.13
+Renault	APE	Industrie / Télécoms	45,327	19.74
+
+
+
+
+CGGVeritas	Bpifrance	Énergie et matières premières	1,935	10.62
+CNR	Caisse des Dépôts	Énergie et matières premières	1,372	33.20
+Eramet	Bpifrance	Énergie et matières premières	3,109	27.00
+Technip	Bpifrance	Énergie et matières premières	12,209	7.66
+Vallourec	Bpifrance	Énergie et matières premières	3,803	5.42
+
+Daher	Bpifrance	Défense / Aéronautique	970	17.09
+
+Eiffage	Bpifrance	Services / Finance	13,909	13.83
+Sequana	Bpifrance	Services / Finance	3,300	15.42
+
+Constellium	Bpifrance	Industrie / Télécoms	5,200	12.22
+Eutelsat	Bpifrance	Industrie / Télécoms	1,476	26.45
+Ingenico	Bpifrance	Industrie / Télécoms	2,197	5.47
+Ingenico	Bpifrance	Industrie / Télécoms	2,197	5.47
+Nexans	Bpifrance	Industrie / Télécoms	4,604	7.90
+ST Microelectronics	Bpifrance	Industrie / Télécoms	6,516	13.76
+Technicolor	Bpifrance	Industrie / Télécoms	3,652	8.00
+Verallia	Bpifrance	Industrie / Télécoms	2,391	10.47
+
+
+
+
+
+
+Bpifrance	APE+Caisse des Dépôts	Services / Finance	1,331	50.00	50 APE + 50 Caisse des Dépôts
+CDC international capital	Caisse des Dépôts	Services / Finance		99.90
+CNP	Caisse des Dépôts	Services / Finance	31,585	42.04
+Compagnie des Alpes	Caisse des Dépôts	Services / Finance	696	39.65
+Egis	Caisse des Dépôts	Services / Finance	937	74.88
+Groupe SNI	Caisse des Dépôts	Services / Finance	1,403	100.00
+ICADE	Caisse des Dépôts	Services / Finance	1,439	38.99
+VEOLIA	Caisse des Dépôts	Services / Finance	24,965	6.75
+
+Transdev	Caisse des Dépôts	Transports	6,600	50.00
+
+
+
+
+Bpifrance	APE+Caisse des Dépôts	Services / Finance	1,331	50.00	50 APE + 50 Caisse des Dépôts

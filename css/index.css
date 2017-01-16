@@ -1,0 +1,192 @@
+/* orange : #ED5731 */
+/* blue : #33C6CC */
+/* black : #242D3B */
+/* grey : #919293 */
+
+
+.left, .right {
+  position: relative;
+  float: left;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 350px;
+  overflow: hidden;
+  font-family: 'Oswald', sans-serif;
+  box-sizing: border-box;
+}
+
+/*******************************/
+/************* LEFT ************/
+/*******************************/
+.card {
+  position: relative;
+  margin : 10% auto;
+  width: 80%;
+  text-align: center;
+  box-shadow: 3px 3px 5px 5px rgba(0,0,0,0.2);
+}
+
+.zero, .one, .two, .three, .four, .five {
+
+}
+
+.zero {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.zero img {
+  width: 80px;
+}
+
+.one {
+  color: #242D3B;
+  font-size: 3em;
+}
+
+.two {
+  color: #33C6CC;
+  font-size: 1.3em;
+  margin-bottom: 10px;
+}
+
+.three {
+  color: #ED5731;
+  font-size: 0.9em;
+  margin-bottom: 10px;
+}
+
+.four {
+  color: #ED5731;
+  font-size: 0.8em;
+  margin-bottom: 10px;
+}
+
+.five {
+  color: #919293;
+  font-size: 0.9em;
+  padding-bottom: 30px;
+}
+
+/********************************/
+/************* RIGHT ************/
+/********************************/
+.wrapper {
+  padding: 10px 0;
+}
+
+.group, .num, .arrow, .prev, .next, .slider {
+  display: inline-block;
+  height: 80px;
+  line-height: 80px;
+  white-space: nowrap;
+  overflow: hidden;
+  margin-right: 3px;
+}
+
+.group {
+  color: #242D3B;
+  font-size: 0.7em;
+  width: 60px;
+}
+
+.num {
+  font-size: 1.5em;
+  width: 25px;
+}
+
+.arrow {
+  width: 0;
+  height: 0;
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+  border-left: 15px solid #33C6CC;
+  position: relative;
+  top: -25px;
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+.prev, .next {
+  width : 20px;
+  height: 20px;
+  border-radius: 100%;
+  background-color: #ED5731;
+  position: relative;
+  top: -30px;
+  cursor: pointer;
+  transition: all 0.1s;
+}
+
+.prev:hover, .next:hover {
+  width : 30px;
+  height: 30px;
+  top: -25px;
+}
+
+.prev:hover {
+  margin-left: -10px;
+}
+
+.slider {
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+
+.title {
+  position: absolute;
+  right: 0;
+  width: 75%;
+  text-align:center;
+  font-size: 0.7em;
+}
+
+/*********************************/
+/************* SLIDER ************/
+/*********************************/
+ul {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20000px;
+  display: inline-block;
+}
+
+li {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  display: inline-block;
+  overflow: hidden;
+  opacity: 0;
+  transition: all 0.6s;
+}
+
+li img {
+  width: 100%;
+}
+
+li.current {
+  opacity: 1;
+}
+
+li.hide {
+  display: none;
+}
+
+li span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  color: #ED5731;
+  font-size: 0.6em;
+  overflow-wrap: break-word;
+}
+
+li span {
+  position: absolute;
+}

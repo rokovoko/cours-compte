@@ -1,0 +1,389 @@
+{
+  "rows" : [
+    {
+      "title" : "Aéroport Toulouse Blagnac",
+      "operateur" : "APE",
+      "secteur" : "Transports",
+      "chiffre" : "124",
+      "capital" : "10.01"
+    },
+    {
+      "title" : "Aéroports de Lyon",
+      "operateur" : "APE",
+      "secteur" : "Transports",
+      "chiffre" : "162",
+      "capital" : "60.00"
+    },
+    {
+      "title" : "Aéroports de Paris",
+      "operateur" : "APE",
+      "secteur" : "Transports",
+      "chiffre" : "2,916",
+      "capital" : "50.63"
+    },
+    {
+      "title" : "Air France",
+      "operateur" : "APE",
+      "secteur" : "Transports",
+      "chiffre" : "26,062",
+      "capital" : "17.58"
+    },
+    {
+      "title" : "Airbus",
+      "operateur" : "APE",
+      "secteur" : "Défense et Aéronautique",
+      "chiffre" : "64,450",
+      "capital" : "9.91"
+    },
+    {
+      "title" : "AREVA",
+      "operateur" : "APE",
+      "secteur" : "Énergie et matières premières",
+      "chiffre" : "4,199",
+      "capital" : "83.00"
+    },
+    {
+      "title" : "Arianespace",
+      "operateur" : "APE",
+      "secteur" : "Défense et Aéronautique",
+      "chiffre" : "1,398",
+      "capital" : "34.68"
+    },
+    {
+      "title" : "CDC international capital",
+      "operateur" : "Caisse des Dépôts",
+      "secteur" : "Services et Finance",
+      "chiffre" : null,
+      "capital" : "99.90"
+    },
+    {
+      "title" : "CGGVeritas",
+      "operateur" : "Bpifrance",
+      "secteur" : "Énergie et matières premières",
+      "chiffre" : "1,935",
+      "capital" : "10.62"
+    },
+    {
+      "title" : "CNP",
+      "operateur" : "Caisse des Dépôts",
+      "secteur" : "Services et Finance",
+      "chiffre" : "31,585",
+      "capital" : "42.04"
+    },
+    {
+      "title" : "CNR",
+      "operateur" : "Caisse des Dépôts",
+      "secteur" : "Énergie et matières premières",
+      "chiffre" : "1,372",
+      "capital" : "33.20"
+    },
+    {
+      "title" : "Compagnie des Alpes",
+      "operateur" : "Caisse des Dépôts",
+      "secteur" : "Services et Finance",
+      "chiffre" : "696",
+      "capital" : "39.65"
+    },
+    {
+      "title" : "Constellium",
+      "operateur" : "Bpifrance",
+      "secteur" : "Industrie et Télécoms",
+      "chiffre" : "5,200",
+      "capital" : "12.22"
+    },
+    {
+      "title" : "Daher",
+      "operateur" : "Bpifrance",
+      "secteur" : "Défense et Aéronautique",
+      "chiffre" : "970",
+      "capital" : "17.09"
+    },
+    {
+      "title" : "DCNS",
+      "operateur" : "APE",
+      "secteur" : "Défense et Aéronautique",
+      "chiffre" : "3,039",
+      "capital" : "62.49"
+    },
+    {
+      "title" : "Dexia",
+      "operateur" : "APE",
+      "secteur" : "Services et Finance",
+      "chiffre" : "834",
+      "capital" : "44.40"
+    },
+    {
+      "title" : "EDF",
+      "operateur" : "APE",
+      "secteur" : "Énergie et matières premières",
+      "chiffre" : "75,006",
+      "capital" : "84.94"
+    },
+    {
+      "title" : "Egis",
+      "operateur" : "Caisse des Dépôts",
+      "secteur" : "Services et Finance",
+      "chiffre" : "937",
+      "capital" : "74.88"
+    },
+    {
+      "title" : "Eiffage",
+      "operateur" : "Bpifrance",
+      "secteur" : "Services et Finance",
+      "chiffre" : "13,909",
+      "capital" : "13.83"
+    },
+    {
+      "title" : "Engie",
+      "operateur" : "APE",
+      "secteur" : "Énergie et matières premières",
+      "chiffre" : "69,883",
+      "capital" : "32.76"
+    },
+    {
+      "title" : "Eramet",
+      "operateur" : "Bpifrance",
+      "secteur" : "Énergie et matières premières",
+      "chiffre" : "3,109",
+      "capital" : "27.00"
+    },
+    {
+      "title" : "Eutelsat",
+      "operateur" : "Bpifrance",
+      "secteur" : "Industrie et Télécoms",
+      "chiffre" : "1,476",
+      "capital" : "26.45"
+    },
+    {
+      "title" : "FDJ",
+      "operateur" : "APE",
+      "secteur" : "Services et Finance",
+      "chiffre" : "1,649",
+      "capital" : "72.00"
+    },
+    {
+      "title" : "France médias monde",
+      "operateur" : "APE",
+      "secteur" : "Audiovisuel",
+      "chiffre" : "255",
+      "capital" : "100.00"
+    },
+    {
+      "title" : "France télévisions",
+      "operateur" : "APE",
+      "secteur" : "Audiovisuel",
+      "chiffre" : "3,006",
+      "capital" : "100.00"
+    },
+    {
+      "title" : "Groupe SNI",
+      "operateur" : "Caisse des Dépôts",
+      "secteur" : "Services et Finance",
+      "chiffre" : "1,403",
+      "capital" : "100.00"
+    },
+    {
+      "title" : "ICADE",
+      "operateur" : "Caisse des Dépôts",
+      "secteur" : "Services et Finance",
+      "chiffre" : "1,439",
+      "capital" : "38.99"
+    },
+    {
+      "title" : "Imprimerie nationale",
+      "operateur" : "APE",
+      "secteur" : "Services et Finance",
+      "chiffre" : "209",
+      "capital" : "100.00"
+    },
+    {
+      "title" : "Ina",
+      "operateur" : "APE",
+      "secteur" : "Audiovisuel",
+      "chiffre" : "36",
+      "capital" : "100.00"
+    },
+    {
+      "title" : "Ingenico",
+      "operateur" : "Bpifrance",
+      "secteur" : "Industrie et Télécoms",
+      "chiffre" : "2,197",
+      "capital" : "5.47"
+    },
+    {
+      "title" : "La Poste",
+      "operateur" : "APE",
+      "secteur" : "Services et Finance",
+      "chiffre" : "23,045",
+      "capital" : "100.00"
+    },
+    {
+      "title" : "LFB",
+      "operateur" : "APE",
+      "secteur" : "Industrie et Télécoms",
+      "chiffre" : "502",
+      "capital" : "100.00"
+    },
+    {
+      "title" : "Marché international de Rungis",
+      "operateur" : "APE",
+      "secteur" : "Services et Finance",
+      "chiffre" : "105",
+      "capital" : "33.34"
+    },
+    {
+      "title" : "Monnaie de Paris",
+      "operateur" : "APE",
+      "secteur" : "Industrie et Télécoms",
+      "chiffre" : "131",
+      "capital" : "100.00"
+    },
+    {
+      "title" : "Nexans",
+      "operateur" : "Bpifrance",
+      "secteur" : "Industrie et Télécoms",
+      "chiffre" : "4,604",
+      "capital" : "7.90"
+    },
+    {
+      "title" : "Nexter",
+      "operateur" : "APE",
+      "secteur" : "Défense et Aéronautique",
+      "chiffre" : "1,070",
+      "capital" : "50.00"
+    },
+    {
+      "title" : "Orange",
+      "operateur" : "APE",
+      "secteur" : "Industrie et Télécoms",
+      "chiffre" : "40,236",
+      "capital" : "23.05"
+    },
+    {
+      "title" : "Port du Havre",
+      "operateur" : "APE",
+      "secteur" : "Transports",
+      "chiffre" : "188",
+      "capital" : "100.00"
+    },
+    {
+      "title" : "PSA",
+      "operateur" : "APE",
+      "secteur" : "Industrie et Télécoms",
+      "chiffre" : "54,676",
+      "capital" : "14.13"
+    },
+    {
+      "title" : "Radio France",
+      "operateur" : "APE",
+      "secteur" : "Audiovisuel",
+      "chiffre" : "639",
+      "capital" : "100.00"
+    },
+    {
+      "title" : "RATP",
+      "operateur" : "APE",
+      "secteur" : "Transports",
+      "chiffre" : "5,556",
+      "capital" : "100.00"
+    },
+    {
+      "title" : "Renault",
+      "operateur" : "APE",
+      "secteur" : "Industrie et Télécoms",
+      "chiffre" : "45,327",
+      "capital" : "19.74"
+    },
+    {
+      "title" : "Safran",
+      "operateur" : "APE",
+      "secteur" : "Défense et Aéronautique",
+      "chiffre" : "18,100",
+      "capital" : "15.39"
+    },
+    {
+      "title" : "Sequana",
+      "operateur" : "Bpifrance",
+      "secteur" : "Services et Finance",
+      "chiffre" : "3,300",
+      "capital" : "15.42"
+    },
+    {
+      "title" : "SFIL",
+      "operateur" : "APE",
+      "secteur" : "Services et Finance",
+      "chiffre" : "75",
+      "capital" : "95.00"
+    },
+    {
+      "title" : "SNCF Mobilités",
+      "operateur" : "APE",
+      "secteur" : "Transports",
+      "chiffre" : "29,296",
+      "capital" : "100.00"
+    },
+    {
+      "title" : "SNCF Réseau",
+      "operateur" : "APE",
+      "secteur" : "Transports",
+      "chiffre" : "6,264",
+      "capital" : "100.00"
+    },
+    {
+      "title" : "ST Microelectronics",
+      "operateur" : "Bpifrance",
+      "secteur" : "Industrie et Télécoms",
+      "chiffre" : "6,516",
+      "capital" : "13.76"
+    },
+    {
+      "title" : "Technicolor",
+      "operateur" : "Bpifrance",
+      "secteur" : "Industrie et Télécoms",
+      "chiffre" : "3,652",
+      "capital" : "8.00"
+    },
+    {
+      "title" : "Technip",
+      "operateur" : "Bpifrance",
+      "secteur" : "Énergie et matières premières",
+      "chiffre" : "12,209",
+      "capital" : "7.66"
+    },
+    {
+      "title" : "Thales",
+      "operateur" : "APE",
+      "secteur" : "Défense et Aéronautique",
+      "chiffre" : "14,063",
+      "capital" : "26.00"
+    },
+    {
+      "title" : "Transdev",
+      "operateur" : "Caisse des Dépôts",
+      "secteur" : "Transports",
+      "chiffre" : "6,600",
+      "capital" : "50.00"
+    },
+    {
+      "title" : "Vallourec",
+      "operateur" : "Bpifrance",
+      "secteur" : "Énergie et matières premières",
+      "chiffre" : "3,803",
+      "capital" : "5.42"
+    },
+    {
+      "title" : "VEOLIA",
+      "operateur" : "Caisse des Dépôts",
+      "secteur" : "Services et Finance",
+      "chiffre" : "24,965",
+      "capital" : "6.75"
+    },
+    {
+      "title" : "Verallia",
+      "operateur" : "Bpifrance",
+      "secteur" : "Industrie et Télécoms",
+      "chiffre" : "2,391",
+      "capital" : "10.47"
+    }
+  ]
+}

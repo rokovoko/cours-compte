@@ -7,15 +7,18 @@
   position: relative;
   margin: 0 auto;
   width: 540px;
+  height:350px;
+  border: 1px solid #DDD;
+  box-sizing: border-box;
 }
+
 .left, .right {
   position: relative;
   float: left;
   top: 0;
   left: 0;
   width: 50%;
-  height: 350px;
-  overflow: hidden;
+  height: 100%;
   font-family: 'Oswald', sans-serif;
   box-sizing: border-box;
 }
@@ -142,7 +145,7 @@
 .title {
   position: absolute;
   right: 0;
-  width: 75%;
+  width: 59%;
   text-align:center;
   font-size: 0.7em;
 }

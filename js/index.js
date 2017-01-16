@@ -65,7 +65,7 @@ function Slider (tab, group) {
   tab.forEach( function (each, i) {
     var c = i == 0 ? keys[each].attr + ' current' : keys[each].attr;
     var self = keys[each].self
-    var src = './img/logo.png'; //'./img/' +f[each].self + '.jpg';
+    var src = 'https://rokovoko.github.io/cours-compte/img/logo.png'; //'./img/' +f[each].self + '.jpg';
     this.rail.append('<li class="' + c + ' index' + i + ' ' + self + '" self="' + self + '"><img src="' + src + '" alt="' + self + '"/><span>' + self + '<span/></li>');
   }.bind(this));
 

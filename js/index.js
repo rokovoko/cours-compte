@@ -2,16 +2,6 @@ var operateur=[], secteur=[], entreprise=[], keys={}, width=80;
 function stringify (str) {
   return str.toLowerCase().replace(/ /g, '-').replace(/é|è/g, 'e').replace(/ô/g, 'o');
 }
-var canvas = document.getElementById('canvas');
-      var context = canvas.getContext('2d');
-      var centerX = canvas.width / 2;
-      var centerY = canvas.height / 2;
-      var radius = 70;
-
-      context.beginPath();
-      context.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
-      context.fillStyle = 'green';
-      context.fill();
 
 function select (el) {
   var i = parseInt($(el).parent().attr('index'));
@@ -134,4 +124,86 @@ $.get('data/data.json').then( function (data) {
   var oSlider = new Slider(operateur, 'operateur');
   var sSlider = new Slider(secteur, 'secteur');
   var fSlider = new Slider(entreprise, 'entreprise');
+});
+
+
+
+
+$(function(){
+
+	//this can also be stored on the DOM using the jQuery selector wrapped in a table.
+	var data = '\
+<tr>\
+	<th>#ECD078</th>\
+	<td>30</td>\
+</tr>\
+<tr>\
+	<th>#D95B43</th>\
+	<td>10</td>\
+</tr>\
+<tr>\
+	<th>#C02942</th>\
+	<td>20</td>\
+</tr>\
+<tr>\
+	<th>#542437</th>\
+	<td>60</td>\
+</tr>\
+<tr>\
+	<th>#53777A</th>\
+	<td>40</td>\
+</tr>\
+';
+
+	var myColor = [];
+	var myData = [];
+
+	var base = 200;
+	var px = base/2;
+
+	ctx.width = base;
+	ctx.height = base;
+
+	function getTotal(){
+		var myTotal = 0;
+
+		for(var i = 0; i < myData.length; i++){
+			myTotal += (typeof myData[i] == 'number') ? myData[i] : 0;
+		}
+		return myTotal;
+	}
+
+	function plotData(){
+		var lastend = 0;
+		var myTotal = getTotal();
+		var canvas = document.getElementById("ctx");
+		var ctx = canvas.getContext("2d");
+
+		ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+		for(var i = 0; i < myData.length; i++){
+			ctx.fillStyle = myColor[i];
+			ctx.beginPath();
+			ctx.moveTo(px,px);
+			ctx.arc(px,px,px,lastend,lastend + (Math.PI*2*(myData[i]/myTotal)),false);
+			ctx.lineTo(px,px);
+			ctx.fill();
+			lastend += Math.PI*2*(myData[i]/myTotal);
+		}
+	}
+
+	$(data).each(function(){
+		myColor.push($("th", this).text());
+		myData.push(parseInt($("td", this).text(), 10));
+
+		$('#list').append(
+			'<li>'+
+			'<div style="'  +  'display:inline-block;height:14px;width:14px;background:'+$("th", this).text()  +  '"></div> '+
+			$("td", this).text()+
+			'</li>'
+		);
+	});
+
+	plotData();
+
 });

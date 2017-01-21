@@ -8,25 +8,25 @@
 @font-face {
   font-family: "antonio-bold";
   src:
-    url("../fonts/antonio-bold-webfont.woff") format('woff'),
-    url("../fonts/antonio-bold-webfont.woff2") format('woff2'),
-    url("../fonts/Antonio-Bold.ttf") format('truetype');
+    url("https://rokovoko.github.io/cours-compte/fonts/antonio-bold-webfont.woff") format('woff'),
+    url("https://rokovoko.github.io/cours-compte/fonts/antonio-bold-webfont.woff2") format('woff2'),
+    url("https://rokovoko.github.io/cours-compte/fonts/Antonio-Bold.ttf") format('truetype');
 }
 
 @font-face {
   font-family: "antonio-regular";
   src:
-    url("../fonts/antonio-regular-webfont.woff") format('woff'),
-    url("../fonts/antonio-regular-webfont.woff2") format('woff2'),
-    url("../fonts/Antonio-Regular.ttf") format('truetype');
+    url("https://rokovoko.github.io/cours-compte/fonts/antonio-regular-webfont.woff") format('woff'),
+    url("https://rokovoko.github.io/cours-compte/fonts/antonio-regular-webfont.woff2") format('woff2'),
+    url("https://rokovoko.github.io/cours-compte/fonts/Antonio-Regular.ttf") format('truetype');
 }
 
 @font-face {
   font-family: "antonio-light";
   src:
-    url("../fonts/antonio-light-webfont.woff") format('woff'),
-    url("../fonts/antonio-light-webfont.woff2") format('woff2'),
-    url("../fonts/Antonio-Light.ttf") format('truetype');
+    url("https://rokovoko.github.io/cours-compte/fonts/antonio-light-webfont.woff") format('woff'),
+    url("https://rokovoko.github.io/cours-compte/fonts/antonio-light-webfont.woff2") format('woff2'),
+    url("https://rokovoko.github.io/cours-compte/fonts/Antonio-Light.ttf") format('truetype');
 }
 
 #wrapper {
@@ -171,7 +171,7 @@
   width: 25px;
   height: 25px;
   font-size:25px;
-  /*background: url("../img/slider-arrow.png");
+  /*background: url("https://rokovoko.github.io/cours-compte/img/slider-arrow.png");
   background-size: contain;
   background-repeat: no-repeat;*/
 

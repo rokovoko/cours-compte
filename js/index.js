@@ -7,13 +7,13 @@ function stringify (str) {
 function lock (item, g) {
   $('.' + g + ' .slot').fadeOut();
   $('.' + g + ' .slot-select').fadeIn();
-  $('.' + g + ' .slot-select .logo-select').css({'background-image': 'url("./img/' + g + 's/' + item.self + '.png' + '")'});
+  $('.' + g + ' .slot-select .logo-select').css({'background-image': 'url("https://rokovoko.github.io/cours-compte/img/' + g + 's/' + item.self + '.png' + '")'});
   $('.' + g + ' .slot-select .name-select').html(item.title);
 }
 
 function fiche (item, g) {
   $('.selected').fadeIn();
-  $('.logo-fiche div').css({'background-image': 'url("./img/fiches/' + item.self + '.png' + '")'});
+  $('.logo-fiche div').css({'background-image': 'url("https://rokovoko.github.io/cours-compte/img/fiches/' + item.self + '.png' + '")'});
   $('.entreprise-fiche .auto').html(item.title);
   $('.operateur-fiche .auto').html(item.operateur);
   $('.secteur-fiche .auto').html(item.secteur);
@@ -100,7 +100,7 @@ function Slider (tab, group) {
   tab.forEach( function (each, i) {
     var c = i == 0 ? keys[each].attr + ' current' : keys[each].attr;
     var self = keys[each].self
-    var src = './img/' + this.group + 's/' + keys[each].self + '.png';
+    var src = 'https://rokovoko.github.io/cours-compte/img/' + this.group + 's/' + keys[each].self + '.png';
     this.rail.append('<li class="' + c + ' index' + i + ' ' + self + '" self="' + self + '"><img src="' + src + '" alt="' + self + '"/></li>');
   }.bind(this));
 
@@ -164,7 +164,7 @@ $.get('data/data.json').then( function (data) {
 
 function afterDraw (pie, total) {
   clearInterval(pie);
-  var stringTotal = total.replace(/\./,',');
+  var stringTotal = total.replace(/\https://rokovoko.github.io/cours-compte/,',');
   stringTotal = stringTotal.replace(/,00/,'');
   $('.left-fiche div.legend').html(stringTotal).fadeIn(600);
 }

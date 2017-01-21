@@ -164,7 +164,7 @@ $.get('data/data.json').then( function (data) {
 
 function afterDraw (pie, total) {
   clearInterval(pie);
-  var stringTotal = total.replace(/\https://rokovoko.github.io/cours-compte/,',');
+  var stringTotal = total.replace(/\./,',');
   stringTotal = stringTotal.replace(/,00/,'');
   $('.left-fiche div.legend').html(stringTotal).fadeIn(600);
 }

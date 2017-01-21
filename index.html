@@ -3,9 +3,10 @@
   <head>
     <meta charset="utf-8">
     <title></title>
-    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
-    <link rel="stylesheet" href="https://rokovoko.github.io/cours-compte/css/reset.css">
-    <link rel="stylesheet" href="https://rokovoko.github.io/cours-compte/css/index.css">
+    <!--<link rel="stylesheet" href="https://rokovoko.github.io/cours-compte/css/reset.css">-->
+    <link rel="stylesheet" href="./css/reset.css">
+    <!--<link rel="stylesheet" href="https://rokovoko.github.io/cours-compte/css/index.css">-->
+    <link rel="stylesheet" href="./css/index.css">
   </head>
   <body>
 
@@ -17,13 +18,55 @@
           <div class="two">ACTIONNAIRE</div>
           <div class="three">PRINCIPALES PARTICIPATIONS</div>
           <div class="four">PUBLIQUES DANS LES ENTREPRISES</div>
-          <div class="five">DONNEES A FIN 2015</div>
         </div>
       </div>
-      <div class="right">
+      <div class="right jumbotron jumbotron-icon">
+        <div class="selector">
+
+        </div>
+        <div class="selected">
+          <ul>
+            <li class="logo-fiche">
+              <div></div>
+            </li>
+            <li class="entreprise-fiche">
+              <span>ENTREPRISES :</span>
+              <span class="auto"></span>
+            </li>
+            <li class="operateur-fiche">
+              <span>OPERATEUR :</span>
+              <span class="auto"></span>
+            </li>
+            <li class="secteur-fiche">
+              <span>SECTEUR :</span>
+              <span class="auto"></span>
+            </li>
+          </ul>
+          <div>
+            <div class="left-fiche">
+              <div>POURCENTAGE DE DETENTION DU CAPITAL :</div>
+              <div class="pie-chart">
+                <canvas id="ctx" width="100" height="100"></canvas>
+                <div class="legend">10,7</div>
+              </div>
+            </div>
+            <div class="right-fiche">
+              <div>CHIFFRE<br /> D'AFFAIRE :</div>
+              <div class="number"></div>
+              <div>Millions d'€</div>
+            </div>
+          </div>
+        </div>
+
+        <footer>
+          <span class="back">
+            <div class="icon"></div>
+            <span class="text">RETOUR</span>
+          </span>
+          <span class="date">DONNEES A FIN 2015</span>
+        </footer>
       </div>
     </div>
-    <canvas id="ctx" width="300" height="300"></canvas>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
     <!--<script type="text/javascript" src="https://rokovoko.github.io/cours-compte/js/index.js"></script>-->
     <script type="text/javascript" src="./js/index.js"></script>

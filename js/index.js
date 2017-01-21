@@ -1,39 +1,69 @@
-var operateur=[], secteur=[], entreprise=[], keys={}, width=80;
+var operateur=[], secteur=[], entreprise=[], keys={}, width=80, state=0;
+
 function stringify (str) {
   return str.toLowerCase().replace(/ /g, '-').replace(/é|è/g, 'e').replace(/ô/g, 'o');
 }
 
+function lock (item, g) {
+  $('.' + g + ' .slot').fadeOut();
+  $('.' + g + ' .slot-select').fadeIn();
+  $('.' + g + ' .slot-select .logo-select').css({'background-image': 'url("./img/' + g + 's/' + item.self + '.png' + '")'});
+  $('.' + g + ' .slot-select .name-select').html(item.title);
+}
+
+function fiche (item, g) {
+  $('.selected').fadeIn();
+  $('.logo-fiche div').css({'background-image': 'url("./img/fiches/' + item.self + '.png' + '")'});
+  $('.entreprise-fiche .auto').html(item.title);
+  $('.operateur-fiche .auto').html(item.operateur);
+  $('.secteur-fiche .auto').html(item.secteur);
+  $('.right-fiche .number').html(item.chiffre.slice(0,5));
+  drawPie(item.capital);
+}
+
 function select (el) {
-  var i = parseInt($(el).parent().attr('index'));
-  var tab = window[$(el).parent().attr('group')];
+  var i = parseInt($(el).parent().parent().attr('index'));
+  var g = $(el).parent().parent().attr('group');
+  var tab = window[g];
 
-  var g = $(el).parent().attr('group');
-  $('.wrapper:not(.' + g + ')').attr('index', 0);
-  $('.wrapper.secteur:not(.' + g + ')').find('.title').html(keys[secteur[0]].title);
-  $('.wrapper.operateur:not(.' + g + ')').find('.title').html(keys[operateur[0]].title);
-  $('.wrapper.entreprise:not(.' + g + ')').find('.title').html(keys[entreprise[0]].title);
+  if ( g != 'entreprise') {
+    $('.wrapper:not(.' + g + ')').attr('index', 0);
+    $('.wrapper.secteur:not(.' + g + ')').find('.title').html(keys[secteur[0]].title);
+    $('.wrapper.operateur:not(.' + g + ')').find('.title').html(keys[operateur[0]].title);
+    $('.wrapper.entreprise:not(.' + g + ')').find('.title').html(keys[entreprise[0]].title);
 
-  $('.wrapper.secteur:not(.' + g + ')').find('.current').removeClass('current');
-  $('.wrapper.operateur:not(.' + g + ')').find('.current').removeClass('current');
-  $('.wrapper.entreprise:not(.' + g + ')').find('.current').removeClass('current');
-  $('.wrapper.secteur:not(.' + g + ')').find('.index0').addClass('current');
-  $('.wrapper.operateur:not(.' + g + ')').find('.index0').addClass('current');
-  $('.wrapper.entreprise:not(.' + g + ')').find('.index0').addClass('current');
-  $('.wrapper:not(.' + g + ')').find('ul').animate({'left': '0px'}, 600);
+    $('.wrapper.secteur:not(.' + g + ')').find('.current').removeClass('current');
+    $('.wrapper.operateur:not(.' + g + ')').find('.current').removeClass('current');
+    $('.wrapper.entreprise:not(.' + g + ')').find('.current').removeClass('current');
+    $('.wrapper.secteur:not(.' + g + ')').find('.index0').addClass('current');
+    $('.wrapper.operateur:not(.' + g + ')').find('.index0').addClass('current');
+    $('.wrapper.entreprise:not(.' + g + ')').find('.index0').addClass('current');
+    $('.wrapper:not(.' + g + ')').find('ul').animate({'left': '0px'}, 600);
 
-  $('li').removeClass('hide');
-  $('li').addClass('hide');
-  keys[tab[i]].attr.split(' ').forEach(function (a){
-    $('.wrapper:not(' + g + ') .' + a).removeClass('hide');
-  });
-  $('.wrapper.operateur .num').html( $('.wrapper.operateur li:not(.hide)').length );
-  $('.wrapper.secteur .num').html( $('.wrapper.secteur li:not(.hide)').length );
-  $('.wrapper.entreprise .num').html( $('.wrapper.entreprise li:not(.hide)').length );
+    $('li').removeClass('hide');
+    $('li').addClass('hide');
+    keys[tab[i]].attr.split(' ').forEach(function (a){
+      $('.wrapper:not(' + g + ') .' + a).removeClass('hide');
+    });
+    $('.wrapper.operateur .num').html( $('.wrapper.operateur li:not(.hide)').length );
+    $('.wrapper.secteur .num').html( $('.wrapper.secteur li:not(.hide)').length );
+    $('.wrapper.entreprise .num').html( $('.wrapper.entreprise li:not(.hide)').length );
+
+    lock(keys[tab[i]], g);
+    state = 1;
+    $('footer .back').fadeIn();
+  }
+  else {
+    fiche(keys[tab[i]], g);
+    state = 2;
+    $('footer .back').fadeIn();
+    $('footer .date').fadeIn();
+  }
 }
 
 function changeSlide (el, direction) {
-  var i = parseInt($(el).parent().attr('index'));
-  var tab = window[$(el).parent().attr('group')];
+  var i = parseInt($(el).parent().parent().attr('index'));
+  var tab = window[$(el).parent().parent().attr('group')];
   $(el).parent().find('.index' + i).removeClass('current');
   i += direction;
 
@@ -44,20 +74,25 @@ function changeSlide (el, direction) {
     i = tab.length - 1;
   }
   $(el).parent().find('.index' + i).addClass('current');
-  $(el).parent().attr('index', i);
+  $(el).parent().parent().attr('index', i);
   $(el).parent().find('ul').stop().animate({'left': i * -width + 'px'}, 600);
   $(el).parent().find('.title').html(keys[tab[i]].title);
 }
 
 function Slider (tab, group) {
-  var innerHTML = '<div class="' + group + ' wrapper"><div class="group">' + group.toUpperCase() + ' :</div>'
+  var innerHTML = '<div class="' + group + ' wrapper">'
+      innerHTML+= '<div class="slot"><div class="group">' + group.toUpperCase() + ' :</div>'
       innerHTML+= '<div class="num">' + tab.length + '</div>'
       innerHTML+= '<div class="arrow"></div>'
-      innerHTML+= '<div class="prev">prev</div>'
+      innerHTML+= '<div class="prev"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i></div>'
       innerHTML+= '<div class="' + group + ' slider"><ul></ul></div>'
-      innerHTML+= '<div class="next">next</div>'
-      innerHTML+= '<div class="title">' + keys[tab[0]].title + '</div></div>';
-  $('#wrapper .right').append(innerHTML);
+      innerHTML+= '<div class="next"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i></div>'
+      innerHTML+= '<div class="title">' + keys[tab[0]].title + '</div></div>'
+      innerHTML+= '<div class="slot-select">'
+      innerHTML+= '<div class="name-select"></div>'
+      innerHTML+= '<div class="logo-select"></div>'
+      innerHTML+= '</div></div>';
+  $('#wrapper .right .selector').append(innerHTML);
 
   $('.' + group + '.wrapper').attr({'index': 0, 'group': group});
   this.rail = $('.' + group + '.slider ul');
@@ -65,8 +100,8 @@ function Slider (tab, group) {
   tab.forEach( function (each, i) {
     var c = i == 0 ? keys[each].attr + ' current' : keys[each].attr;
     var self = keys[each].self
-    var src = 'https://rokovoko.github.io/cours-compte/img/logo.png'; //'./img/' +f[each].self + '.jpg';
-    this.rail.append('<li class="' + c + ' index' + i + ' ' + self + '" self="' + self + '"><img src="' + src + '" alt="' + self + '"/><span>' + self + '<span/></li>');
+    var src = './img/' + this.group + 's/' + keys[each].self + '.png';
+    this.rail.append('<li class="' + c + ' index' + i + ' ' + self + '" self="' + self + '"><img src="' + src + '" alt="' + self + '"/></li>');
   }.bind(this));
 
   $('.' + group + '.wrapper .prev').click(function () {
@@ -77,7 +112,7 @@ function Slider (tab, group) {
     changeSlide(this, 1);
   });
 
-  $('.' + group + '.wrapper .arrow').click(function () {
+  $('.' + group + '.wrapper .slider').click(function () {
     select(this);
   });
 }
@@ -124,86 +159,60 @@ $.get('data/data.json').then( function (data) {
   var oSlider = new Slider(operateur, 'operateur');
   var sSlider = new Slider(secteur, 'secteur');
   var fSlider = new Slider(entreprise, 'entreprise');
+  console.log(keys);
+});
+
+function afterDraw (pie, total) {
+  clearInterval(pie);
+  var stringTotal = total.replace(/\./,',');
+  stringTotal = stringTotal.replace(/,00/,'');
+  $('.left-fiche div.legend').html(stringTotal).fadeIn(600);
+}
+
+$('footer .back').click( function () {
+  if ( state == 2 ) {
+    $('.selected').fadeOut(600);
+    $('footer .date').fadeOut();
+  }
+  else {
+    $('.slot').fadeIn();
+    $('.slot-select').fadeOut();
+    $('footer .back').fadeOut();
+  }
 });
 
 
+function drawPie (total) {
 
+  var px = 45;
+  var percent = 0;
+  var start = 1.5*Math.PI;
+  var ctx = document.getElementById('ctx').getContext('2d');
 
-$(function(){
+  function chart () {
+    var slice = Math.PI*2*(percent/100);
+    ctx.clearRect(0, 0, px*2, px*2);
+    ctx.fillStyle = '#26B4D5';
+  	ctx.beginPath();
+  	ctx.moveTo(px,px);
+  	ctx.arc(px,px,px, 0,slice, false);
+  	ctx.lineTo(px,px);
+    ctx.closePath();
+  	ctx.fill();
+    ctx.fillStyle = '#D2DDF0';
+    ctx.beginPath();
+    ctx.moveTo(px,px);
+    ctx.arc(px,px,px,slice, 0,false);
+    ctx.lineTo(px,px);
+    ctx.closePath();
+  	ctx.fill();
+  }
 
-	//this can also be stored on the DOM using the jQuery selector wrapped in a table.
-	var data = '\
-<tr>\
-	<th>#ECD078</th>\
-	<td>30</td>\
-</tr>\
-<tr>\
-	<th>#D95B43</th>\
-	<td>10</td>\
-</tr>\
-<tr>\
-	<th>#C02942</th>\
-	<td>20</td>\
-</tr>\
-<tr>\
-	<th>#542437</th>\
-	<td>60</td>\
-</tr>\
-<tr>\
-	<th>#53777A</th>\
-	<td>40</td>\
-</tr>\
-';
+  function animate () {
+    percent+= total/40;
+    if (percent>=total) afterDraw(pie, total);
+    else chart();
+  }
 
-	var myColor = [];
-	var myData = [];
-
-	var base = 200;
-	var px = base/2;
-
-	ctx.width = base;
-	ctx.height = base;
-
-	function getTotal(){
-		var myTotal = 0;
-
-		for(var i = 0; i < myData.length; i++){
-			myTotal += (typeof myData[i] == 'number') ? myData[i] : 0;
-		}
-		return myTotal;
-	}
-
-	function plotData(){
-		var lastend = 0;
-		var myTotal = getTotal();
-		var canvas = document.getElementById("ctx");
-		var ctx = canvas.getContext("2d");
-
-		ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-		for(var i = 0; i < myData.length; i++){
-			ctx.fillStyle = myColor[i];
-			ctx.beginPath();
-			ctx.moveTo(px,px);
-			ctx.arc(px,px,px,lastend,lastend + (Math.PI*2*(myData[i]/myTotal)),false);
-			ctx.lineTo(px,px);
-			ctx.fill();
-			lastend += Math.PI*2*(myData[i]/myTotal);
-		}
-	}
-
-	$(data).each(function(){
-		myColor.push($("th", this).text());
-		myData.push(parseInt($("td", this).text(), 10));
-
-		$('#list').append(
-			'<li>'+
-			'<div style="'  +  'display:inline-block;height:14px;width:14px;background:'+$("th", this).text()  +  '"></div> '+
-			$("td", this).text()+
-			'</li>'
-		);
-	});
-
-	plotData();
-
-});
+  var pie = window.setInterval(animate, 16);
+}

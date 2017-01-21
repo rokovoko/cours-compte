@@ -1,15 +1,45 @@
-/* orange : #ED5731 */
-/* blue : #33C6CC */
+/* orange : #E23B33 */
+/* blue : #26B4D5 */
 /* black : #242D3B */
 /* grey : #919293 */
+
+@import url('./css/font-awesome.min.css');
+
+@font-face {
+  font-family: "antonio-bold";
+  src:
+    url("../fonts/antonio-bold-webfont.woff") format('woff'),
+    url("../fonts/antonio-bold-webfont.woff2") format('woff2'),
+    url("../fonts/Antonio-Bold.ttf") format('truetype');
+}
+
+@font-face {
+  font-family: "antonio-regular";
+  src:
+    url("../fonts/antonio-regular-webfont.woff") format('woff'),
+    url("../fonts/antonio-regular-webfont.woff2") format('woff2'),
+    url("../fonts/Antonio-Regular.ttf") format('truetype');
+}
+
+@font-face {
+  font-family: "antonio-light";
+  src:
+    url("../fonts/antonio-light-webfont.woff") format('woff'),
+    url("../fonts/antonio-light-webfont.woff2") format('woff2'),
+    url("../fonts/Antonio-Light.ttf") format('truetype');
+}
 
 #wrapper {
   position: relative;
   margin: 0 auto;
   width: 540px;
-  height:350px;
+  height:360px;
+  color: #242D3B;
   border: 1px solid #DDD;
   box-sizing: border-box;
+  font-family: 'antonio-regular';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .left, .right {
@@ -17,10 +47,15 @@
   float: left;
   top: 0;
   left: 0;
-  width: 50%;
   height: 100%;
-  font-family: 'Oswald', sans-serif;
   box-sizing: border-box;
+}
+
+.left {
+  width:40%;
+}
+.right {
+  width:60%;
 }
 
 /*******************************/
@@ -28,8 +63,9 @@
 /*******************************/
 .card {
   position: relative;
-  margin : 10% auto;
-  width: 80%;
+  margin : 3% auto;
+  width: 94%;
+  height: 94%;
   text-align: center;
   box-shadow: 3px 3px 5px 5px rgba(0,0,0,0.2);
 }
@@ -44,43 +80,59 @@
 }
 
 .zero img {
-  width: 80px;
+  width: 60px;
 }
 
 .one {
   color: #242D3B;
   font-size: 3em;
+  margin-bottom: 5px;
 }
 
 .two {
-  color: #33C6CC;
+  color: #26B4D5;
   font-size: 1.3em;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 .three {
-  color: #ED5731;
-  font-size: 0.9em;
+  color: #E23B33;
+  font-size: 1em;
   margin-bottom: 10px;
 }
 
 .four {
-  color: #ED5731;
-  font-size: 0.8em;
+  color: #E23B33;
+  font-size: 0.85em;
   margin-bottom: 10px;
-}
-
-.five {
-  color: #919293;
-  font-size: 0.9em;
-  padding-bottom: 30px;
 }
 
 /********************************/
 /************* RIGHT ************/
 /********************************/
+
 .wrapper {
-  padding: 10px 0;
+  position:relative;
+  height: 80px;
+  padding: 15px 0;
+}
+
+.wrapper:first-child {
+  margin-top: 20px;
+}
+
+.selector, .selected {
+  left: 3%;
+  width: 94%;
+}
+
+.slot {
+  width:100%;
+}
+
+.slot, .slot-select, .selector, .selected {
+  position: absolute;
+  top: 0;
 }
 
 .group, .num, .arrow, .prev, .next, .slider {
@@ -89,18 +141,19 @@
   line-height: 80px;
   white-space: nowrap;
   overflow: hidden;
-  margin-right: 3px;
+  margin-right: 5px;
 }
 
 .group {
   color: #242D3B;
-  font-size: 0.7em;
-  width: 60px;
+  font-size: 0.8em;
+  width: 65px;
+  text-align: center;
 }
 
 .num {
   font-size: 1.5em;
-  width: 25px;
+  width: 30px;
 }
 
 .arrow {
@@ -108,27 +161,36 @@
   height: 0;
   border-top: 15px solid transparent;
   border-bottom: 15px solid transparent;
-  border-left: 15px solid #33C6CC;
+  border-left: 15px solid #26B4D5;
   position: relative;
   top: -25px;
   margin-right: 20px;
-  cursor: pointer;
 }
 
 .prev, .next {
-  width : 20px;
-  height: 20px;
-  border-radius: 100%;
-  background-color: #ED5731;
+  width: 25px;
+  height: 25px;
+  font-size:25px;
+  /*background: url("../img/slider-arrow.png");
+  background-size: contain;
+  background-repeat: no-repeat;*/
+
   position: relative;
   top: -30px;
-  cursor: pointer;
   transition: all 0.1s;
+  cursor: pointer;
+}
+
+.prev i, .next i {
+  position: absolute;
+  top: 0;
+  left: 2px;
 }
 
 .prev:hover, .next:hover {
-  width : 30px;
-  height: 30px;
+  font-size:35px;
+  width: 35px;
+  height: 35px;
   top: -25px;
 }
 
@@ -140,60 +202,237 @@
   position: relative;
   width: 80px;
   height: 80px;
+  cursor: pointer;
+  border: 1px solid rgba(36,45,59,0.5);
+  box-shadow: 0 0 1px 0px rgba(36,45,59,0.3) inset, 0 0 1px 0px rgba(36,45,59,0.3);
+  box-sizing: border-box;
+  border-radius: 15px;
+  overflow:hidden;
 }
 
 .title {
   position: absolute;
   right: 0;
-  width: 59%;
-  text-align:center;
-  font-size: 0.7em;
+  width: 190px;
+  text-align: center;
+  font-size: 0.9em;
+  padding-top: 6px;
 }
 
 /*********************************/
 /************* SLIDER ************/
 /*********************************/
-ul {
+.selector ul {
   position: absolute;
   top: 0;
   left: 0;
+  overflow: hidden;
   width: 20000px;
   display: inline-block;
 }
 
-li {
+.selector li {
   position: relative;
   width: 80px;
   height: 80px;
   display: inline-block;
-  overflow: hidden;
-  opacity: 0;
+  opacity: 1;
   transition: all 0.6s;
+  border-radius: 50px;
 }
 
-li img {
+.selector li img {
   width: 100%;
+  height:100%;
 }
 
-li.current {
+.selector li.current {
   opacity: 1;
 }
 
-li.hide {
+.selector li.hide {
   display: none;
 }
 
-li span {
+.selector li span {
   position: absolute;
   top: 0;
   left: 0;
   width: 0;
   height: 0;
-  color: #ED5731;
+  color: #E23B33;
   font-size: 0.6em;
   overflow-wrap: break-word;
 }
 
-li span {
+.selector li span {
   position: absolute;
+}
+
+
+/*********************************/
+/************* SLOTS ************/
+/*********************************/
+
+.slot-select {
+  position: absolute;
+  width: 90%;
+  height: 80px;
+  display: none;
+  overflow: hidden;
+}
+
+.logo-select {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 80px;
+  height: 80px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  border: 1px solid rgba(36,45,59,0.5);
+  box-shadow: 0 0 1px 0px rgba(36,45,59,0.3) inset, 0 0 1px 0px rgba(36,45,59,0.3);
+  box-sizing: border-box;
+  border-radius: 15px;
+  overflow:hidden;
+}
+
+.name-select {
+  position: absolute;
+  top:0;
+  left: 70px;
+  height: 50%;
+  width: 100%;
+  padding: 20px 0 0 20px;
+  box-sizing: border-box;
+  border-bottom: 1px solid rgba(36,45,59,0.5);
+}
+
+/*********************************/
+/************* SELECT ************/
+/*********************************/
+
+.selected {
+  display:none;
+  width: 95%;
+  height: 100%;
+  background-color: white;
+}
+
+.selected ul li {
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(36,45,59,0.5);
+  font-size: 0.9em;
+}
+
+.selected ul li span:not(.auto) {
+  float: left;
+  width: 80px;
+}
+
+.selected ul li.logo-fiche div {
+  height: 80px;
+  width: 100%;
+  padding: 3px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  margin-bottom: 5px;
+}
+
+.selected>div {
+  margin-top: 15px;
+}
+
+.left-fiche, .right-fiche {
+  position: relative;
+  float: left;
+}
+
+.left-fiche {
+  width: 70%;
+}
+
+.right-fiche {
+  width: 30%;
+  font-size: 0.9em;
+}
+
+.left-fiche div:first-child{
+  display: inline-block;
+  font-size: 0.9em;
+  width: 70px;
+}
+
+.left-fiche .pie-chart {
+  position: relative;
+  top: -50px;
+  width: 90px;
+  height: 90px;
+  left: 45%;
+}
+
+.left-fiche canvas, .left-fiche div.legend {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.left-fiche div.legend {
+  display: none;
+  font-size: 2em;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.right-fiche .number {
+  margin: 3px 0;
+  font-size: 2.5em;
+  color: #E23B33;
+}
+
+.right-fiche div:last-child {
+  font-size: 0.7em;
+  margin-top: 5px;
+}
+
+footer {
+  display: block;
+  position: absolute;
+  bottom: 10px;
+  left: 20px;
+  font-size: 0.9em;
+}
+
+footer .back {
+  cursor: pointer;
+  display: none;
+}
+
+.back .icon, .back .text {
+  color: #E23B33;
+  cursor: pointer;
+}
+
+.back .icon {
+  width: 0;
+  height: 0;
+  display: inline-block;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-right: 10px solid #E23B33;
+}
+
+.back .text {
+  position: relative;
+  top: -3px;
+  margin-right: 35px;
+}
+
+footer .date {
+  position: relative !important;
+  top: -3px !important;
+  color: rgba(36,45,59,0.5);
+  font-family: 'antonio-light';
+  display: none;
 }

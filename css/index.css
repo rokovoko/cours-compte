@@ -3,7 +3,7 @@
 /* black : #242D3B */
 /* grey : #919293 */
 
-@import url('./css/font-awesome.min.css');
+@import url('https://rokovoko.github.io/cours-compte/css/css/font-awesome.min.css');
 
 @font-face {
   font-family: "antonio-bold";
@@ -111,7 +111,7 @@
   height: 20px;
   width:90%;
   margin-left: 5%;
-  background-image: url('../img/rokovoko.png');
+  background-image: url('https://rokovoko.github.io/cours-compte/img/rokovoko.png');
   font-size: 0.85em;
   margin-bottom: 10px;
   bottom:0px;
@@ -183,10 +183,6 @@
   width: 25px;
   height: 25px;
   font-size:25px;
-  /*background: url("https://rokovoko.github.io/cours-compte/img/slider-arrow.png");
-  background-size: contain;
-  background-repeat: no-repeat;*/
-
   position: relative;
   top: -30px;
   transition: all 0.1s;
@@ -228,7 +224,7 @@
   right: 0;
   width: 190px;
   text-align: center;
-  font-size: 0.9em;
+  font-size: 0.8em;
   padding-top: 6px;
   top: 80px;
 }

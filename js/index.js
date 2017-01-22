@@ -1,9 +1,29 @@
-var operateur=[], secteur=[], entreprise=[], keys={}, width=80, state=0, prevState=0;
+var operateur=[], secteur=[], entreprise=[], keys={}, width=80, state=0, prevState=0, doubleSelect;
 
 function stringify (str) {
   return str.toLowerCase().replace(/ /g, '-').replace(/é|è/g, 'e').replace(/ô/g, 'o');
 }
 
+function changeBPI (g) {
+  if ( g == 'entreprise' ) {
+    keys['bpifrance'] = {
+      "self" : "bpifrance",
+      "attr": "ape caisse-des-depots services-et-finance",
+      "title" : "Bpifrance",
+      "operateur" : "APE et Caisse des Dépôts",
+      "secteur" : "Services et Finance",
+      "chiffre" : "1,331",
+      "capital" : "50.00"
+    }
+  }
+  else if ( g == 'operateur') {
+    keys['bpifrance'] = {
+      attr: "defense-et-aeronautique energie-et-matieres-premieres services-et-finance industrie-et-telecoms",
+      self: "bpifrance",
+      title: "Bpifrance"
+    }
+  }
+}
 
 // ------------ SELECTS -------------//
 // ------------ SELECTS -------------//
@@ -31,37 +51,43 @@ function fiche (item, g) {
 }
 
 function select (el) {
-  var i = parseInt($(el).parent().parent().attr('index'));
-  var g = $(el).parent().parent().attr('group');
+
+  var i = parseInt($(el).attr('index'));
+  var g = $(el).closest('.wrapper').attr('group');
   var tab = window[g];
   prevState = state;
+
   changeBPI(g);
+
   if ( g != 'entreprise') {
-    $('.wrapper:not(.' + g + ')').attr('index', 0);
-    $('.wrapper.secteur:not(.' + g + ')').find('.title').html(keys[secteur[0]].title);
-    $('.wrapper.operateur:not(.' + g + ')').find('.title').html(keys[operateur[0]].title);
-    $('.wrapper.entreprise:not(.' + g + ')').find('.title').html(keys[entreprise[0]].title);
+    $('li').not('.'+g).addClass('hide');
 
-    $('.wrapper.secteur:not(.' + g + ')').find('.current').removeClass('current');
-    $('.wrapper.operateur:not(.' + g + ')').find('.current').removeClass('current');
-    $('.wrapper.entreprise:not(.' + g + ')').find('.current').removeClass('current');
-    $('.wrapper.secteur:not(.' + g + ')').find('.index0').addClass('current');
-    $('.wrapper.operateur:not(.' + g + ')').find('.index0').addClass('current');
-    $('.wrapper.entreprise:not(.' + g + ')').find('.index0').addClass('current');
-    $('.wrapper:not(.' + g + ')').find('ul').animate({'left': '0px'}, 600);
-
-    $('li').removeClass('hide');
-    $('li').addClass('hide');
-
-    if (g == 'secteur') {
-      keys[tab[i]].attr.split(' ').forEach(function (a){
-        $('.wrapper:not(.operateur):not(.entreprise) .' + a).removeClass('hide');
-      });
+    if (doubleSelect) {
+      $('.wrapper').not('.'+g).find('.' + keys[tab[i]].self + '.' + doubleSelect).removeClass('hide');
     }
-    $('.wrapper:not(' + g + ') .' + keys[tab[i]].self).removeClass('hide');
-    $('.wrapper.operateur .num').html( $('.wrapper.operateur li:not(.hide)').length );
-    $('.wrapper.secteur .num').html( $('.wrapper.secteur li:not(.hide)').length );
-    $('.wrapper.entreprise .num').html( $('.wrapper.entreprise li:not(.hide)').length );
+    else {
+      if ( g == 'secteur') {
+        keys[tab[i]].attr.split(' ').forEach( function (a) {
+          $('.wrapper').not('.entreprise').find('.' + a).removeClass('hide');
+        });
+      }
+      $('.wrapper').not('.'+g).find('.' + keys[tab[i]].self).removeClass('hide');
+      doubleSelect = keys[tab[i]].self;
+    }
+
+    $('.wrapper').not('.'+g).each( function (idx, t) {
+      var tI = $(t).find('li').not('.hide').first().attr('index');
+      var gTab = window[$(t).attr('group')];
+      if(tI) {
+        $(t).find('.current').removeClass('current');
+        $(t).find('li').not('.hide').first().addClass('current'); 
+        $(t).closest('.wrapper').attr('index', tI);
+        $(t).find('.title').html(keys[gTab[tI]].title);
+        $(t).find('.num').html( $(t).find('li').not('.hide').length);
+      }
+    });
+
+    $('.wrapper').not('.'+g).find('ul').animate({'left': '0px'}, 600);
 
     lock(keys[tab[i]], g);
     state = 1;
@@ -77,9 +103,17 @@ function select (el) {
 
 $('footer .back').click( function () {
   $('li').removeClass('hide');
-  $('.wrapper.operateur .num').html( $('.wrapper.operateur li').length );
-  $('.wrapper.secteur .num').html( $('.wrapper.secteur li').length );
-  $('.wrapper.entreprise .num').html( $('.wrapper.entreprise li').length );
+  $('li').removeClass('current');
+  $('.wrapper').each( function ( idx, t ){
+    var list =  $(t).find('li');
+    var tLength = $(list).length;
+    var tName = $(list).attr('self');
+    $(t).find('.num').html( tLength );
+    $(t).find('.title').html( keys[tName].title );
+  });
+  $('.wrapper .index0').addClass('current');
+  $('.wrapper').attr('index', 0);
+  $('.wrapper').find('ul').stop().animate({'left': '0px'}, 400);
   if ( state == 2 ) {
     $('.selected').fadeOut();
     $('footer .date').fadeOut();
@@ -91,6 +125,7 @@ $('footer .back').click( function () {
   else {
     $('.slot').fadeIn();
     $('.slot-select').fadeOut();
+    doubleSelect = false;
   }
   state = prevState;
 });
@@ -104,63 +139,31 @@ $('footer .back').click( function () {
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
 
-function changeBPI (g) {
-  if ( g == 'entreprise' ) {
-    keys['bpifrance'] = {
-      "self" : "bpifrance",
-      "attr": "ape caisse-des-depots services-et-finance",
-      "title" : "Bpifrance",
-      "operateur" : "APE et Caisse des Dépôts",
-      "secteur" : "Services et Finance",
-      "chiffre" : "1,331",
-      "capital" : "50.00"
-    }
-  }
-  else if ( g == 'operateur') {
-    keys['bpifrance'] = {
-      attr: "defense-et-aeronautique energie-et-matieres-premieres services-et-finance industrie-et-telecoms",
-      self: "bpifrance",
-      title: "Bpifrance"
-    }
-  }
-}
-
 function changeSlide (el, direction) {
-  var g = $(el).parent().parent().attr('group');
+
+  var g = $(el).closest('.wrapper').attr('group');
   var tab = window[g];
   var old = '.wrapper.' + g + ' .current';
   var oldIndex = parseInt($(old).attr('index'));
-  console.log('this is: ',$(old).prev('li:not(.hide)'))
-  if ( direction < 0 ) {
-    if ($(old).prev('li:not(.hide)')) {
-      var newIndex = parseInt($(old).prev('li:not(.hide)').attr('index'));
-    }
-    else {
-      var newIndex = parseInt($('.wrapper.' + g + ' li:not(.hide)').length-1);
-    }
-  }
-  else {
-    if ($(old).next('li:not(.hide)')) {
-      var newIndex = parseInt($(old).next('li:not(.hide)').attr('index'));
-    }
-    else {
-      var newIndex = 0;
-    }
-  }
-  console.log( 'a : ' , $(newIndex))
-  console.log( 'b : ' , $('.wrapper.' + g + ' .index' + newIndex).attr('self'))
-  console.log( 'c : ' , keys[$('.wrapper.' + g + ' .index' + newIndex).attr('self')])
+
+  var allElements = $(old).parent().find('li:not(.hide)');
+  var oldElementIndex = allElements.index($(old));
+  var newElementIndex = oldElementIndex+direction;
+  if(newElementIndex<0) newElementIndex = allElements.length-1;
+  else if (newElementIndex>allElements.length-1) newElementIndex = 0;
+
+  var newIndex = parseInt($(allElements[newElementIndex]).attr('index'));
 
   $('.wrapper.' + g + ' .index' + oldIndex).removeClass('current');
   $('.wrapper.' + g + ' .index' + newIndex).addClass('current');
   $('.wrapper.' + g).attr('index', newIndex);
-  $('.wrapper.' + g).find('ul').stop().animate({'left': newIndex * -width + 'px'}, 600);
-  $('.wrapper.' + g).find('.title').html(keys[$('.wrapper.' + g + ' .index' + newIndex).attr('self')].title);
+  $('.wrapper.' + g).find('ul').stop().animate({'left': newElementIndex * -width + 'px'}, 400);
+  $('.wrapper.' + g).find('.title').html(keys[tab[newIndex]].title);
 }
 
 function Slider (tab, group) {
   changeBPI(group);
-  var sliderName = group == 'operateur' ? 'opérateur' : group;
+  var sliderName = (group == 'operateur') ? 'opérateur' : group;
   var innerHTML = '<div class="' + group + ' wrapper">'
       innerHTML+= '<div class="slot"><div class="group ghost-center"><p>' + sliderName.toUpperCase() + ' :</p></div>'
       innerHTML+= '<div class="num">' + tab.length + '</div>'
@@ -193,7 +196,7 @@ function Slider (tab, group) {
     changeSlide(this, 1);
   });
 
-  $('.' + group + '.wrapper .slider').click(function () {
+  $('.' + group + '.wrapper .slider li').click(function () {
     select(this);
   });
 }
@@ -207,7 +210,7 @@ function Slider (tab, group) {
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
-$.get('data/data.json').then( function (data) {
+$.get('https://rokovoko.github.io/cours-compte/data/data.json').then( function (data) {
 
   data.rows.forEach(function ( firm ){
     var o = stringify(firm.operateur);
@@ -239,7 +242,6 @@ $.get('data/data.json').then( function (data) {
   var oSlider = new Slider(operateur, 'operateur');
   var sSlider = new Slider(secteur, 'secteur');
   var fSlider = new Slider(entreprise, 'entreprise');
-  console.log(keys);
 });
 
 // ------------ PIE CHARTS -------------//

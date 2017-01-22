@@ -4,24 +4,28 @@ function stringify (str) {
   return str.toLowerCase().replace(/ /g, '-').replace(/é|è/g, 'e').replace(/ô/g, 'o');
 }
 
+var enBPI = {
+  "self" : "bpifrance",
+  "attr": "ape caisse-des-depots services-et-finance",
+  "title" : "Bpifrance",
+  "operateur" : "APE et Caisse des Dépôts",
+  "secteur" : "Services et Finance",
+  "chiffre" : "1,331",
+  "capital" : "100.00"
+}
+
+var opBPI = {
+  attr: "defense-et-aeronautique energie-et-matieres-premieres services-et-finance industrie-et-telecoms",
+  self: "bpifrance",
+  title: "Bpifrance"
+}
+
 function changeBPI (g) {
   if ( g == 'entreprise' ) {
-    keys['bpifrance'] = {
-      "self" : "bpifrance",
-      "attr": "ape caisse-des-depots services-et-finance",
-      "title" : "Bpifrance",
-      "operateur" : "APE et Caisse des Dépôts",
-      "secteur" : "Services et Finance",
-      "chiffre" : "1,331",
-      "capital" : "50.00"
-    }
+    keys['bpifrance'] = enBPI;
   }
   else if ( g == 'operateur') {
-    keys['bpifrance'] = {
-      attr: "defense-et-aeronautique energie-et-matieres-premieres services-et-finance industrie-et-telecoms",
-      self: "bpifrance",
-      title: "Bpifrance"
-    }
+    keys['bpifrance'] = opBPI;
   }
 }
 
@@ -47,7 +51,24 @@ function fiche (item, g, i) {
   $('.operateur-fiche .auto').html(item.operateur);
   $('.secteur-fiche .auto').html(item.secteur);
   $('.right-fiche .number').html(item.chiffre.replace(/,/,' '));
-  drawPie(item.capital);
+  (item.self == 'cdc-international-capital') ? $('.right-fiche').hide() : $('.right-fiche').show();
+  (item.self == 'bpifrance') ? drawPie(item.capital, true) : drawPie(item.capital, false);
+}
+
+function refresh (g) {
+  var wrappers = g ? $('.wrapper').not('.' + g ) : $('.wrapper');
+  $(wrappers).each( function (idx, t) {
+    var otherG = $(t).attr('group');
+    var tab = window[otherG];
+    var allElements = $(t).find('li').not('.hide');
+    var current = $(t).find('li.current').hasClass('hide') ? $(allElements).first() : $(t).find('li.current');
+    var currentPosition = allElements.index($(current));
+    var currentIndex = $(current).attr('index');
+    $(t).attr('index', currentIndex);
+    $(t).find('ul').stop().animate({'left': currentPosition * -width + 'px'}, 400);
+    $(t).find('.title').html(keys[tab[currentIndex]].title);
+    $(t).find('.num').html(allElements.length);
+  });
 }
 
 function select (el) {
@@ -78,19 +99,7 @@ function select (el) {
       
     }
 
-    $('.wrapper').not('.'+g).each( function (idx, t) {
-      var tI = $(t).find('li').not('.hide').first().attr('index');
-      var gTab = window[$(t).attr('group')];
-      if(tI) {
-        $(t).find('.current').removeClass('current');
-        $(t).find('li').not('.hide').first().addClass('current'); 
-        $(t).closest('.wrapper').attr('index', tI);
-        $(t).find('.title').html(keys[gTab[tI]].title);
-        $(t).find('.num').html( $(t).find('li').not('.hide').length);
-      }
-    });
-
-    $('.wrapper').not('.'+g).find('ul').animate({'left': '0px'}, 600);
+    refresh(g);
 
     lock(keys[tab[i]], g, i);
     state = 1;
@@ -105,32 +114,21 @@ function select (el) {
 }
 
 function unlock (el) {
-  console.log('dS : ', doubleSelect);
   var i = parseInt($(el).attr('index'));
   var g = $(el).closest('.wrapper').attr('group');
   var tab = window[g];
   var otherG = (g == 'operateur') ? 'secteur' : 'operateur';
-  console.log('tab : ', '\.'+tab[i])
   var regex = new RegExp('\.'+tab[i], 'g');
   if (doubleSelect) {
     doubleSelect = doubleSelect.replace(regex,'');
-  console.log('dS2 : ', doubleSelect);
     if (doubleSelect.length < 1) {
       $('.slot').fadeIn();
       $('.slot-select').fadeOut();
       doubleSelect = false;
+      state = 0;
       $('li').removeClass('hide');
-      $('li').removeClass('current');
-      $('.wrapper').each( function ( idx, t ){
-        var list =  $(t).find('li');
-        var tLength = $(list).length;
-        var tName = $(list).attr('self');
-        $(t).find('.num').html( tLength );
-        $(t).find('.title').html( keys[tName].title );
-      });
-      $('.wrapper .index0').addClass('current');
-      $('.wrapper').attr('index', 0);
-      $('.wrapper').find('ul').stop().animate({'left': '0px'}, 400);
+      refresh(false);
+      $('footer .back').fadeOut();
     }
     else {
       $('.' + g + ' .slot').fadeIn();
@@ -154,17 +152,8 @@ $('footer .back').click( function () {
     $('.slot-select').fadeOut();
     doubleSelect = false;
     $('li').removeClass('hide');
-    $('li').removeClass('current');
-    $('.wrapper').each( function ( idx, t ){
-      var list =  $(t).find('li');
-      var tLength = $(list).length;
-      var tName = $(list).attr('self');
-      $(t).find('.num').html( tLength );
-      $(t).find('.title').html( keys[tName].title );
-    });
-    $('.wrapper .index0').addClass('current');
-    $('.wrapper').attr('index', 0);
-    $('.wrapper').find('ul').stop().animate({'left': '0px'}, 400);
+    refresh(false);
+    $('footer .back').fadeOut();
   }
   state = prevState;
 });
@@ -221,7 +210,12 @@ function Slider (tab, group) {
   this.rail = $('.' + group + '.slider ul');
   this.group = group;
   tab.forEach( function (each, i) {
-    var c = i == 0 ? keys[each].attr + ' current' : keys[each].attr;
+    console.log(each)
+    if (each == 'bpifrance') {
+
+      changeBPI(this.group);
+    }
+    var c = (i == 0) ? keys[each].attr + ' current' : keys[each].attr;
     var self = keys[each].self
     var src = 'https://rokovoko.github.io/cours-compte/img/' + this.group + 's/' + keys[each].self + '.png';
     this.rail.append('<li class="' + c + ' index' + i + ' ' + self + '" index="' + i + '" self="' + self + '"><img src="' + src + '" alt="' + self + '"/></li>');
@@ -284,6 +278,8 @@ $.get('https://rokovoko.github.io/cours-compte/data/data.json').then( function (
     keys[f] = firm;
   });
 
+  keys['bpifrance'] = enBPI;
+  entreprise.push('bpifrance');
   var oSlider = new Slider(operateur, 'operateur');
   var sSlider = new Slider(secteur, 'secteur');
   var fSlider = new Slider(entreprise, 'entreprise');
@@ -298,14 +294,19 @@ $.get('https://rokovoko.github.io/cours-compte/data/data.json').then( function (
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
-function afterDraw (pie, total) {
+function afterDraw (pie, total, bpi) {
   clearInterval(pie);
-  var stringTotal = total.replace(/\./,',');
-  stringTotal = stringTotal.replace(/,00/,'');
-  $('.left-fiche div.legend').html(stringTotal).fadeIn();
+  if (!bpi) {
+    var stringTotal = total.replace(/\./,',');
+    stringTotal = stringTotal.replace(/,00/,'');
+    $('.left-fiche div.legend').css('font-size', '2em').html(stringTotal).fadeIn();
+  }
+  else {
+    $('.left-fiche div.legend').css('font-size', '0.9em').html('<div class="bpi">50%<br />APE<br /><br />50%<br />Caisse des Dépôts</div>').fadeIn();
+  }
 }
 
-function drawPie (total) {
+function drawPie (total, bpi) {
 
   var px = 45;
   var percent = 0;
@@ -333,7 +334,7 @@ function drawPie (total) {
 
   function animate () {
     percent+= total/40;
-    if (percent>total) afterDraw(pie, total);
+    if (percent>total) afterDraw(pie, total, bpi);
     else chart();
   }
 

@@ -64,8 +64,11 @@ function refresh (g) {
     var current = $(t).find('li.current').hasClass('hide') ? $(allElements).first() : $(t).find('li.current');
     var currentPosition = allElements.index($(current));
     var currentIndex = $(current).attr('index');
+    $(t).find('li').removeClass('current');
+    $(current).addClass('current');
     $(t).attr('index', currentIndex);
     $(t).find('ul').stop().animate({'left': currentPosition * -width + 'px'}, 400);
+    changeBPI(otherG);
     $(t).find('.title').html(keys[tab[currentIndex]].title);
     $(t).find('.num').html(allElements.length);
   });
@@ -84,7 +87,6 @@ function select (el) {
     $('li').not('.'+g).addClass('hide');
 
     if (doubleSelect) {
-
       if ( '.' + keys[tab[i]].self != doubleSelect ) doubleSelect += '.' + keys[tab[i]].self;
       $('.wrapper').not('.'+g).find(doubleSelect).removeClass('hide');
     }
@@ -96,7 +98,10 @@ function select (el) {
       }
       doubleSelect = '.' + keys[tab[i]].self;
       $('.wrapper').not('.'+g).find(doubleSelect).removeClass('hide');
-      
+    }
+
+    if ( g == 'operateur' && keys[tab[i]].self == 'bpifrance' || doubleSelect == '.bpifrance'+'.'+keys[tab[i]].self) {
+      $('.wrapper.entreprise li.ape.caisse-des-depots.bpifrance').addClass('hide');
     }
 
     refresh(g);
@@ -210,9 +215,7 @@ function Slider (tab, group) {
   this.rail = $('.' + group + '.slider ul');
   this.group = group;
   tab.forEach( function (each, i) {
-    console.log(each)
     if (each == 'bpifrance') {
-
       changeBPI(this.group);
     }
     var c = (i == 0) ? keys[each].attr + ' current' : keys[each].attr;

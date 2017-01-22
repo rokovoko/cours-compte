@@ -302,7 +302,8 @@
   box-shadow: 0 0 1px 0px rgba(36,45,59,0.3) inset, 0 0 1px 0px rgba(36,45,59,0.3);
   box-sizing: border-box;
   border-radius: 15px;
-  overflow:hidden;
+  overflow: hidden;
+  cursor: pointer;
 }
 
 .name-select {

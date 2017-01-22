@@ -80,7 +80,7 @@
 }
 
 .zero img {
-  width: 60px;
+  width: 80px;
 }
 
 .one {
@@ -111,11 +111,12 @@
   margin-bottom: 10px;
   bottom:0px;
   width:100%;
+  font-size: 0.6em;
   text-align: center;
 }
 
 .five img {
-  width:142px;
+  width:90px;
 }
 /********************************/
 /************* RIGHT ************/
@@ -449,4 +450,8 @@ footer .date {
   color: rgba(36,45,59,0.5);
   font-family: arial, sans-serif;
   display: none;
+}
+
+.bpi {
+  text-align: center;
 }

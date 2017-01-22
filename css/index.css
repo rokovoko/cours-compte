@@ -108,17 +108,15 @@
 }
 .five {
   position: absolute;
-  height: 20px;
-  width:90%;
-  margin-left: 5%;
-  background-image: url('https://rokovoko.github.io/cours-compte/img/rokovoko.png');
-  font-size: 0.85em;
   margin-bottom: 10px;
   bottom:0px;
-  background-size: contain;
-  background-repeat: no-repeat;
+  width:100%;
+  text-align: center;
 }
 
+.five img {
+  width:142px;
+}
 /********************************/
 /************* RIGHT ************/
 /********************************/
@@ -364,7 +362,7 @@
 }
 
 .left-fiche {
-  width: 70%;
+  width: 69%;
 }
 
 .right-fiche {

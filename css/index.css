@@ -79,8 +79,13 @@
   padding-bottom: 20px;
 }
 
+.zero {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
 .zero img {
-  width: 70px;
+  width: 65px;
 }
 
 .one {
@@ -92,13 +97,13 @@
 .two {
   color: #26B4D5;
   font-size: 1.3em;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .three {
   color: #E23B33;
   font-size: 1em;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
 .four {

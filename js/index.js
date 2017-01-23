@@ -196,7 +196,7 @@ function changeSlide (el, direction) {
 
 function Slider (tab, group) {
   changeBPI(group);
-  var sliderName = (group == 'operateur') ? 'opérateur' : group;
+  var sliderName = (group == 'operateur') ? 'actionnaire' : group;
   var innerHTML = '<div class="' + group + ' wrapper">'
       innerHTML+= '<div class="slot"><div class="group ghost-center"><p>' + sliderName.toUpperCase() + 'S :</p></div>'
       innerHTML+= '<div class="num">' + tab.length + '</div>'

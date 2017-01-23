@@ -106,6 +106,12 @@
   font-size: 0.85em;
   margin-bottom: 10px;
 }
+
+.four img {
+  width: 95%;
+  padding-top: 20px;
+}
+
 .five {
   position: absolute;
   margin-bottom: 10px;

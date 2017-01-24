@@ -204,7 +204,7 @@ function Slider (tab, group) {
   changeBPI(group);
   var sliderName = (group == 'operateur') ? 'actionnaire' : group;
   var innerHTML = '<div class="' + group + ' wrapper">'
-      innerHTML+= '<div class="slot"><div class="group ghost-center"><p>' + sliderName.toUpperCase() + 'S :</p></div>'
+      innerHTML+= '<div class="slot"><div class="group ghost-center">' + sliderName.toUpperCase() + 'S :</div>'
       innerHTML+= '<div class="num">' + tab.length + '</div>'
       innerHTML+= '<div class="arrow"></div>'
       innerHTML+= '<div class="prev"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i></div>'

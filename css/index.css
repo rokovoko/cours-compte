@@ -203,11 +203,13 @@
   font-size: 0.8em;
   width: 89px;
   text-align: center;
+  float: left;
 }
 
 .num {
   font-size: 1.5em;
   width: 40px;
+  float: left;
 }
 
 .arrow {

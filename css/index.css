@@ -58,6 +58,32 @@
   width:60%;
 }
 
+/*.tooltip {
+  position: absolute;
+  padding: 0;
+  top: 0;
+  left: 105px;
+  width: 0px;
+  height: 80px;
+  overflow: hidden;
+  box-sizing: border-box;
+  font-family: arial;
+  font-size: 0.8em;
+  opacity: 0;
+  border-radius: 15px;
+  text-align: center;
+  transition: all 0.3s;
+  color: #fff;
+  background-color: #26B4D5;
+}
+
+.tooltip div {
+  position: absolute;
+  margin: 10px;
+  width:85px;
+  box-sizing: border-box;
+}*/
+
 /*******************************/
 /************* LEFT ************/
 /*******************************/
@@ -112,10 +138,10 @@
   margin-bottom: 10px;
 }
 
-.four img {
+/*.four img {
   width: 98%;
   padding-top: 20px;
-}
+}*/
 
 .five {
   position: absolute;
@@ -169,13 +195,13 @@
 .group {
   color: #242D3B;
   font-size: 0.8em;
-  width: 65px;
+  width: 89px;
   text-align: center;
 }
 
 .num {
   font-size: 1.5em;
-  width: 30px;
+  width: 40px;
 }
 
 .arrow {
@@ -187,6 +213,7 @@
   position: relative;
   top: -25px;
   margin-right: 20px;
+  display: none;
 }
 
 .prev, .next {

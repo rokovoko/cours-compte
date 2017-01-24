@@ -20,6 +20,12 @@ var opBPI = {
   title: "Bpifrance"
 }
 
+// var tooltip = {
+//   operateur : 'Affichez<br />les secteurs<br />et entreprises<br />de cet actionnaire',
+//   secteur : 'Affichez<br />les opérateurs<br />et entreprises<br />de ce secteur',
+//   entreprise : 'Affichez<br />les données<br />sur cette<br />entreprise'
+// }
+
 function changeBPI (g) {
   if ( g == 'entreprise' ) {
     keys['bpifrance'] = enBPI;
